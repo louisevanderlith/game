@@ -1,27 +1,27 @@
-package game
+package core
 
 import "testing"
 
 func init() {
-	seedLevel()
+	CreateContext()
 }
 
-func TestXPForLevel(t *testing.T) {
-	input := 68
-	expected := 117300
-	actual := xpRequired(input)
+func TestXPForNextLevel(t *testing.T) {
+	input := 113901
+	expected := 3399
+	actual := GetRequired(input)
 
 	if expected != actual {
 		t.Errorf("Expected: %v, got %v", expected, actual)
 	}
 }
 
-func TestLevelForXP(t *testing.T) {
-	input := 117299
+func TestLevelForTotalXP(t *testing.T) {
+	input := 113901
 	expected := 67
-	actual := getLevel(input)
+	actual := GetRank(input)
 
-	if expected != actual.Rank {
+	if expected != actual {
 		t.Errorf("Expected: %v, got %v", expected, actual)
 	}
 }

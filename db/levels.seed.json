@@ -1,0 +1,306 @@
+[
+    {
+        "Rank": 75,
+        "Required": 142500
+    },
+    {
+        "Rank": 74,
+        "Required": 138750
+    },
+    {
+        "Rank": 73,
+        "Required": 135050
+    },
+    {
+        "Rank": 72,
+        "Required": 131400
+    },
+    {
+        "Rank": 71,
+        "Required": 127800
+    },
+    {
+        "Rank": 70,
+        "Required": 124250
+    },
+    {
+        "Rank": 69,
+        "Required": 120750
+    },
+    {
+        "Rank": 68,
+        "Required": 117300
+    },
+    {
+        "Rank": 67,
+        "Required": 113900
+    },
+    {
+        "Rank": 66,
+        "Required": 110550
+    },
+    {
+        "Rank": 65,
+        "Required": 107250
+    },
+    {
+        "Rank": 64,
+        "Required": 104000
+    },
+    {
+        "Rank": 63,
+        "Required": 100800
+    },
+    {
+        "Rank": 62,
+        "Required": 97650
+    },
+    {
+        "Rank": 61,
+        "Required": 94550
+    },
+    {
+        "Rank": 60,
+        "Required": 91500
+    },
+    {
+        "Rank": 59,
+        "Required": 88500
+    },
+    {
+        "Rank": 58,
+        "Required": 85550
+    },
+    {
+        "Rank": 57,
+        "Required": 82650
+    },
+    {
+        "Rank": 56,
+        "Required": 79800
+    },
+    {
+        "Rank": 55,
+        "Required": 77000
+    },
+    {
+        "Rank": 54,
+        "Required": 74250
+    },
+    {
+        "Rank": 53,
+        "Required": 71550
+    },
+    {
+        "Rank": 52,
+        "Required": 68900
+    },
+    {
+        "Rank": 51,
+        "Required": 66300
+    },
+    {
+        "Rank": 50,
+        "Required": 63750
+    },
+    {
+        "Rank": 49,
+        "Required": 61250
+    },
+    {
+        "Rank": 48,
+        "Required": 58800
+    },
+    {
+        "Rank": 47,
+        "Required": 56400
+    },
+    {
+        "Rank": 46,
+        "Required": 54050
+    },
+    {
+        "Rank": 45,
+        "Required": 51750
+    },
+    {
+        "Rank": 44,
+        "Required": 49500
+    },
+    {
+        "Rank": 43,
+        "Required": 47300
+    },
+    {
+        "Rank": 42,
+        "Required": 45150
+    },
+    {
+        "Rank": 41,
+        "Required": 43050
+    },
+    {
+        "Rank": 40,
+        "Required": 41000
+    },
+    {
+        "Rank": 39,
+        "Required": 39000
+    },
+    {
+        "Rank": 38,
+        "Required": 37050
+    },
+    {
+        "Rank": 37,
+        "Required": 35150
+    },
+    {
+        "Rank": 36,
+        "Required": 33300
+    },
+    {
+        "Rank": 35,
+        "Required": 31500
+    },
+    {
+        "Rank": 34,
+        "Required": 29750
+    },
+    {
+        "Rank": 33,
+        "Required": 28050
+    },
+    {
+        "Rank": 32,
+        "Required": 26400
+    },
+    {
+        "Rank": 31,
+        "Required": 24800
+    },
+    {
+        "Rank": 30,
+        "Required": 23250
+    },
+    {
+        "Rank": 29,
+        "Required": 21750
+    },
+    {
+        "Rank": 28,
+        "Required": 20300
+    },
+    {
+        "Rank": 27,
+        "Required": 18900
+    },
+    {
+        "Rank": 26,
+        "Required": 17550
+    },
+    {
+        "Rank": 25,
+        "Required": 16250
+    },
+    {
+        "Rank": 24,
+        "Required": 15000
+    },
+    {
+        "Rank": 23,
+        "Required": 13800
+    },
+    {
+        "Rank": 22,
+        "Required": 12650
+    },
+    {
+        "Rank": 21,
+        "Required": 11550
+    },
+    {
+        "Rank": 20,
+        "Required": 10500
+    },
+    {
+        "Rank": 19,
+        "Required": 9500
+    },
+    {
+        "Rank": 18,
+        "Required": 8550
+    },
+    {
+        "Rank": 17,
+        "Required": 7650
+    },
+    {
+        "Rank": 16,
+        "Required": 6800
+    },
+    {
+        "Rank": 15,
+        "Required": 6000
+    },
+    {
+        "Rank": 14,
+        "Required": 5250
+    },
+    {
+        "Rank": 13,
+        "Required": 4550
+    },
+    {
+        "Rank": 12,
+        "Required": 3900
+    },
+    {
+        "Rank": 11,
+        "Required": 3300
+    },
+    {
+        "Rank": 10,
+        "Required": 2750
+    },
+    {
+        "Rank": 9,
+        "Required": 2250
+    },
+    {
+        "Rank": 8,
+        "Required": 1800
+    },
+    {
+        "Rank": 7,
+        "Required": 1400
+    },
+    {
+        "Rank": 6,
+        "Required": 1050
+    },
+    {
+        "Rank": 5,
+        "Required": 750
+    },
+    {
+        "Rank": 4,
+        "Required": 500
+    },
+    {
+        "Rank": 3,
+        "Required": 300
+    },
+    {
+        "Rank": 2,
+        "Required": 150
+    },
+    {
+        "Rank": 1,
+        "Required": 50
+    },
+    {
+        "Rank": 0,
+        "Required": 0
+    }
+]

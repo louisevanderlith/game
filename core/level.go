@@ -1,4 +1,4 @@
-package game
+package core
 
 import (
 	"github.com/louisevanderlith/husk"
@@ -7,43 +7,34 @@ import (
 type Level struct {
 	Rank     int
 	Required int
-	Next     *Level
 }
 
 func (o Level) Valid() (bool, error) {
 	return husk.ValidateStruct(&o)
 }
 
-func seedLevel() {
-	/*exists := ctx.Levels.Exists(func(o husk.Dataer) bool {
-		return true
-	})
+//GetRank finds the ranks you're not, and subtracts one
+func GetRank(totalXP int) int {
+	record, err := ctx.Levels.FindFirst(byNotMet(totalXP))
 
-	if !exists {
-		for i := 75; i >= 0; i-- {
-			ctx.Levels.Create(createLevel(i))
-		}
-	}*/
-}
-
-func createLevel(lvl int) Level {
-	result := Level{}
-
-	result.Rank = lvl
-	result.Required = xpRequired(lvl)
-
-	if lvl != 75 {
-		nxt := createLevel(lvl + 1)
-		result.Next = &nxt
+	if err != nil {
+		return 0
 	}
 
-	return result
+	lvl := record.Data().(*Level)
+
+	return lvl.Rank - 1
 }
 
-func xpRequired(lvl int) int {
-	if lvl == 0 || lvl == 1 {
-		return lvl * 50.0
+//GetRequired returns the amount of XP required for the next level.
+func GetRequired(totalXP int) int {
+	record, err := ctx.Levels.FindFirst(byNotMet(totalXP))
+
+	if err != nil {
+		return 50
 	}
 
-	return xpRequired(lvl-1) + lvl*50
+	lvl := record.Data().(*Level)
+
+	return lvl.Required - totalXP
 }

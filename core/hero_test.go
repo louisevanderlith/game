@@ -1,4 +1,4 @@
-package game_test
+package core
 
 import "testing"
 
