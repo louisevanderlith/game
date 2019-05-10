@@ -9,8 +9,8 @@ import (
 type Hero struct {
 	UserID      int64
 	Credits     int
-	Experiences []*Experience
-	Level       *Level
+	Experiences []Experience
+	Level       Level
 	TotalXP     int
 	LastUpdated time.Time //update on save???
 }
@@ -28,7 +28,7 @@ func (h *Hero) AddExperience(xpType ExperienceType) {
 		Type:   xpType,
 	}
 
-	h.Experiences = append(h.Experiences, &xp)
+	h.Experiences = append(h.Experiences, xp)
 	h.TotalXP += xpValue
 }
 
