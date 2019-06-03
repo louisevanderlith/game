@@ -8,6 +8,9 @@
 package routers
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/louisevanderlith/game/controllers"
 	"github.com/louisevanderlith/mango"
 
@@ -18,8 +21,8 @@ import (
 	"github.com/louisevanderlith/secure/core/roletype"
 )
 
-func Setup(s *mango.Service) {
-	ctrlmap := EnableFilters(s)
+func Setup(s *mango.Service, host string) {
+	ctrlmap := EnableFilters(s, host)
 
 	heroCtrl := controllers.NewHeroCtrl(ctrlmap)
 	beego.Router("/v1/hero/", heroCtrl)
@@ -28,7 +31,7 @@ func Setup(s *mango.Service) {
 	beego.Router("/v1/level", levelCtrl)
 }
 
-func EnableFilters(s *mango.Service) *control.ControllerMap {
+func EnableFilters(s *mango.Service, host string) *control.ControllerMap {
 	ctrlmap := control.CreateControlMap(s)
 
 	emptyMap := make(secure.ActionMap)
@@ -39,12 +42,11 @@ func EnableFilters(s *mango.Service) *control.ControllerMap {
 	ctrlmap.Add("/v1/level", emptyMap)
 
 	beego.InsertFilter("/v1/*", beego.BeforeRouter, ctrlmap.FilterAPI, false)
+	allowed := fmt.Sprintf("https://*%s", strings.TrimSuffix(host, "/"))
 
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-		AllowAllOrigins: true,
-		AllowMethods:    []string{"GET", "POST", "PUT", "OPTIONS"},
-		AllowHeaders:    []string{"Origin", "Authorization", "Access-Control-Allow-Origin", "Content-Type"},
-		ExposeHeaders:   []string{"Content-Length", "Access-Control-Allow-Origin"},
+		AllowOrigins: []string{allowed},
+		AllowMethods: []string{"GET", "POST", "OPTIONS"},
 	}), false)
 
 	return ctrlmap
