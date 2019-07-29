@@ -1,29 +1,34 @@
 package routers
 
 import (
-	"fmt"
-	"strings"
+	"github.com/louisevanderlith/droxolite"
 
 	"github.com/louisevanderlith/game/controllers"
-	"github.com/louisevanderlith/mango"
-
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/plugins/cors"
-	"github.com/louisevanderlith/mango/control"
-	secure "github.com/louisevanderlith/secure/core"
-	"github.com/louisevanderlith/secure/core/roletype"
 )
 
-func Setup(s *mango.Service, host string) {
-	ctrlmap := EnableFilters(s, host)
+func Setup(poxy *droxolite.Epoxy) {
+	//Hero
+	heroCtrl := &controllers.HeroController{}
+	heroGroup := droxolite.NewRouteGroup("hero", heroCtrl)
+
+	poxy.AddGroup(heroGroup)
+
+	//Level
+	lvlCtrl := &controllers.LevelController{}
+	lvlGroup := droxolite.NewRouteGroup("level", lvlCtrl)
+
+	poxy.AddGroup(lvlGroup)
+
+	/*ctrlmap := EnableFilters(s, host)
 
 	heroCtrl := controllers.NewHeroCtrl(ctrlmap)
 	beego.Router("/v1/hero/", heroCtrl)
 
 	levelCtrl := controllers.NewLevelCtrl(ctrlmap)
-	beego.Router("/v1/level", levelCtrl)
+	beego.Router("/v1/level", levelCtrl)*/
 }
 
+/*
 func EnableFilters(s *mango.Service, host string) *control.ControllerMap {
 	ctrlmap := control.CreateControlMap(s)
 
@@ -44,3 +49,4 @@ func EnableFilters(s *mango.Service, host string) *control.ControllerMap {
 
 	return ctrlmap
 }
+*/

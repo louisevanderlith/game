@@ -1,15 +1,7 @@
 package controllers
 
-import "github.com/louisevanderlith/mango/control"
+import "github.com/louisevanderlith/droxolite/xontrols"
 
 type HeroController struct {
-	control.APIController
+	xontrols.APICtrl
 }
-
-func NewHeroCtrl(ctrlMap *control.ControllerMap) *HeroController {
-	result := &HeroController{}
-	result.SetInstanceMap(ctrlMap)
-
-	return result
-}
-
