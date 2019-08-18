@@ -2,21 +2,24 @@ package routers
 
 import (
 	"github.com/louisevanderlith/droxolite"
+	"github.com/louisevanderlith/droxolite/roletype"
 
 	"github.com/louisevanderlith/game/controllers"
 )
 
 func Setup(poxy *droxolite.Epoxy) {
 	//Hero
-	heroCtrl := &controllers.HeroController{}
+	heroCtrl := &controllers.Heroes{}
 	heroGroup := droxolite.NewRouteGroup("hero", heroCtrl)
+	heroGroup.AddRoute("Get Hero By ID", "/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, heroCtrl.View)
+	heroGroup.AddRoute("Get All Heroes", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, heroCtrl.Get)
 
 	poxy.AddGroup(heroGroup)
 
 	//Level
-	lvlCtrl := &controllers.LevelController{}
+	lvlCtrl := &controllers.Levels{}
 	lvlGroup := droxolite.NewRouteGroup("level", lvlCtrl)
-
+	lvlGroup.AddRoute("Get All Heroes", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, lvlCtrl.Get)
 	poxy.AddGroup(lvlGroup)
 
 	/*ctrlmap := EnableFilters(s, host)

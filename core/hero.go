@@ -19,6 +19,14 @@ func (o Hero) Valid() (bool, error) {
 	return husk.ValidateStruct(&o)
 }
 
+func GetHeroes(page, pagesize int) husk.Collection {
+	return ctx.Heroes.Find(page, pagesize, husk.Everything())
+}
+
+func GetHero(key husk.Key) (husk.Recorder, error) {
+	return ctx.Heroes.FindByKey(key)
+}
+
 func (h *Hero) AddExperience(xpType ExperienceType) {
 	// Add XP Record with (new) Level
 	// Update Hero to reflect new TotalXP
