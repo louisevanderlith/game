@@ -3,37 +3,34 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/louisevanderlith/droxolite/xontrols"
+	"github.com/louisevanderlith/droxolite/context"
 	"github.com/louisevanderlith/game/core"
 	"github.com/louisevanderlith/husk"
 )
 
 type Heroes struct {
-	xontrols.APICtrl
 }
 
-func (req *Heroes) Get() {
-	page, size := req.GetPageData()
+func (req *Heroes) Get(ctx context.Contexer) (int, interface{}) {
+	page, size := ctx.GetPageData()
 
 	results := core.GetHeroes(page, size)
 
-	req.Serve(http.StatusOK, nil, results)
+	return http.StatusOK, results
 }
 
-func (req *Heroes) View() {
-	key, err := husk.ParseKey(req.FindParam("uploadKey"))
+func (req *Heroes) View(ctx context.Contexer) (int, interface{}) {
+	key, err := husk.ParseKey(ctx.FindParam("uploadKey"))
 
 	if err != nil {
-		req.Serve(http.StatusBadRequest, err, nil)
-		return
+		return http.StatusBadRequest, err
 	}
 
 	record, err := core.GetHero(key)
 
 	if err != nil {
-		req.Serve(http.StatusNotFound, err, nil)
-		return
+		return http.StatusNotFound, err
 	}
 
-	req.Serve(http.StatusOK, nil, record)
+	return http.StatusOK, record
 }

@@ -1,16 +1,18 @@
 package routers
 
 import (
-	"github.com/louisevanderlith/droxolite"
+	"github.com/louisevanderlith/droxolite/mix"
+	"github.com/louisevanderlith/droxolite/resins"
 	"github.com/louisevanderlith/droxolite/roletype"
+	"github.com/louisevanderlith/droxolite/routing"
 
 	"github.com/louisevanderlith/game/controllers"
 )
 
-func Setup(poxy *droxolite.Epoxy) {
+func Setup(poxy resins.Epoxi) {
 	//Hero
 	heroCtrl := &controllers.Heroes{}
-	heroGroup := droxolite.NewRouteGroup("hero", heroCtrl)
+	heroGroup := routing.NewRouteGroup("hero", mix.JSON)
 	heroGroup.AddRoute("Get Hero By ID", "/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, heroCtrl.View)
 	heroGroup.AddRoute("Get All Heroes", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, heroCtrl.Get)
 
@@ -18,7 +20,7 @@ func Setup(poxy *droxolite.Epoxy) {
 
 	//Level
 	lvlCtrl := &controllers.Levels{}
-	lvlGroup := droxolite.NewRouteGroup("level", lvlCtrl)
+	lvlGroup := routing.NewRouteGroup("level", mix.JSON)
 	lvlGroup.AddRoute("Get All Heroes", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, lvlCtrl.Get)
 	poxy.AddGroup(lvlGroup)
 

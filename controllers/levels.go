@@ -3,13 +3,12 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/louisevanderlith/droxolite/xontrols"
+	"github.com/louisevanderlith/droxolite/context"
 )
 
 type Levels struct {
-	xontrols.APICtrl
 }
 
-func (req *Levels) Get() {
-	req.Serve(http.StatusNotImplemented, nil, nil)
+func (req *Levels) Get(ctx context.Contexer) (int, interface{}) {
+	return http.StatusNotImplemented, nil
 }
