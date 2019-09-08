@@ -9,6 +9,6 @@ import (
 type Levels struct {
 }
 
-func (req *Levels) Get(ctx context.Contexer) (int, interface{}) {
+func (req *Levels) Get(ctx context.Requester) (int, interface{}) {
 	return http.StatusNotImplemented, nil
 }

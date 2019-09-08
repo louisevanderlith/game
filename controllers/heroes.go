@@ -11,7 +11,13 @@ import (
 type Heroes struct {
 }
 
-func (req *Heroes) Get(ctx context.Contexer) (int, interface{}) {
+func (req *Heroes) Get(ctx context.Requester) (int, interface{}) {
+	results := core.GetHeroes(1, 10)
+
+	return http.StatusOK, results
+}
+
+func (req *Heroes) Search(ctx context.Requester) (int, interface{}) {
 	page, size := ctx.GetPageData()
 
 	results := core.GetHeroes(page, size)
@@ -19,8 +25,8 @@ func (req *Heroes) Get(ctx context.Contexer) (int, interface{}) {
 	return http.StatusOK, results
 }
 
-func (req *Heroes) View(ctx context.Contexer) (int, interface{}) {
-	key, err := husk.ParseKey(ctx.FindParam("uploadKey"))
+func (req *Heroes) View(ctx context.Requester) (int, interface{}) {
+	key, err := husk.ParseKey(ctx.FindParam("key"))
 
 	if err != nil {
 		return http.StatusBadRequest, err
