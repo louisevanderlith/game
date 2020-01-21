@@ -2,6 +2,7 @@ package core
 
 import (
 	"github.com/louisevanderlith/husk"
+	"github.com/louisevanderlith/husk/serials"
 )
 
 type context struct {
@@ -15,8 +16,8 @@ func CreateContext() {
 	defer seed()
 
 	ctx = context{
-		Heroes: husk.NewTable(new(Hero)),
-		Levels: husk.NewTable(new(Level)),
+		Heroes: husk.NewTable(Hero{}, serials.GobSerial{}),
+		Levels: husk.NewTable(Level{}, serials.GobSerial{}),
 	}
 }
 
