@@ -9,7 +9,7 @@ type Level struct {
 	Required int
 }
 
-func (o Level) Valid() (bool, error) {
+func (o Level) Valid() error {
 	return husk.ValidateStruct(&o)
 }
 

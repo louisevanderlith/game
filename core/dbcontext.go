@@ -15,8 +15,8 @@ func CreateContext() {
 	defer seed()
 
 	ctx = context{
-		Heroes: husk.NewTable(new(Hero)),
-		Levels: husk.NewTable(new(Level)),
+		Heroes: husk.NewTable(Hero{}),
+		Levels: husk.NewTable(Level{}),
 	}
 }
 

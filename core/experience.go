@@ -7,6 +7,6 @@ type Experience struct {
 	Points int
 }
 
-func (o Experience) Valid() (bool, error) {
+func (o Experience) Valid() error {
 	return husk.ValidateStruct(&o)
 }

@@ -15,11 +15,11 @@ type Hero struct {
 	LastUpdated time.Time //update on save???
 }
 
-func (o Hero) Valid() (bool, error) {
+func (o Hero) Valid() error {
 	return husk.ValidateStruct(&o)
 }
 
-func GetHeroes(page, pagesize int) husk.Collection {
+func GetHeroes(page, pagesize int) (husk.Collection, error) {
 	return ctx.Heroes.Find(page, pagesize, husk.Everything())
 }
 
