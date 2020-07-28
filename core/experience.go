@@ -8,5 +8,5 @@ type Experience struct {
 }
 
 func (o Experience) Valid() error {
-	return husk.ValidateStruct(&o)
+	return husk.ValidateStruct(o)
 }

@@ -16,7 +16,7 @@ type Hero struct {
 }
 
 func (o Hero) Valid() error {
-	return husk.ValidateStruct(&o)
+	return husk.ValidateStruct(o)
 }
 
 func GetHeroes(page, pagesize int) (husk.Collection, error) {

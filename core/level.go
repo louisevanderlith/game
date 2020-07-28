@@ -10,7 +10,7 @@ type Level struct {
 }
 
 func (o Level) Valid() error {
-	return husk.ValidateStruct(&o)
+	return husk.ValidateStruct(o)
 }
 
 //GetRank finds the ranks you're not, and subtracts one
