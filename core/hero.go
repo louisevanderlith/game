@@ -7,7 +7,7 @@ import (
 )
 
 type Hero struct {
-	UserID      int64
+	EntityKey   husk.Key
 	Credits     int
 	Experiences []Experience
 	Level       Level

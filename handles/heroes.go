@@ -1,17 +1,16 @@
 package handles
 
 import (
+	"github.com/louisevanderlith/droxolite/drx"
 	"github.com/louisevanderlith/droxolite/mix"
 	"log"
 	"net/http"
 
-	"github.com/louisevanderlith/droxolite/context"
 	"github.com/louisevanderlith/game/core"
 	"github.com/louisevanderlith/husk"
 )
 
 func GetHeroes(w http.ResponseWriter, r *http.Request) {
-	ctx := context.New(w, r)
 	results, err := core.GetHeroes(1, 10)
 
 	if err != nil {
@@ -20,7 +19,7 @@ func GetHeroes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = ctx.Serve(http.StatusOK, mix.JSON(results))
+	err = mix.Write(w, mix.JSON(results))
 
 	if err != nil {
 		log.Println(err)
@@ -28,8 +27,7 @@ func GetHeroes(w http.ResponseWriter, r *http.Request) {
 }
 
 func SearchHeroes(w http.ResponseWriter, r *http.Request) {
-	ctx := context.New(w, r)
-	page, size := ctx.GetPageData()
+	page, size := drx.GetPageData(r)
 
 	results, err := core.GetHeroes(page, size)
 
@@ -39,7 +37,7 @@ func SearchHeroes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = ctx.Serve(http.StatusOK, mix.JSON(results))
+	err = mix.Write(w, mix.JSON(results))
 
 	if err != nil {
 		log.Println(err)
@@ -47,8 +45,7 @@ func SearchHeroes(w http.ResponseWriter, r *http.Request) {
 }
 
 func ViewHeroes(w http.ResponseWriter, r *http.Request) {
-	ctx := context.New(w, r)
-	key, err := husk.ParseKey(ctx.FindParam("key"))
+	key, err := husk.ParseKey(drx.FindParam(r, "key"))
 
 	if err != nil {
 		log.Println(err)
@@ -64,7 +61,7 @@ func ViewHeroes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = ctx.Serve(http.StatusOK, mix.JSON(record.Data()))
+	err = mix.Write(w, mix.JSON(record.Data()))
 
 	if err != nil {
 		log.Println(err)
