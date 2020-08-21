@@ -10,6 +10,7 @@ import (
 func SetupRoutes(scrt, secureUrl string) http.Handler {
 	//Hero
 	/*
+	ins := kong.NewResourceInspector(http.DefaultClient, securityUrl, managerUrl)
 		heroCtrl := &controllers.Heroes{}
 		heroGroup := routing.NewRouteGroup("hero", mix.JSON)
 		heroGroup.AddRoute("Get Hero By ID", "/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, heroCtrl.View)
