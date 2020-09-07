@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/louisevanderlith/husk"
+	"github.com/louisevanderlith/husk/validation"
 )
 
 type Level struct {
@@ -10,7 +10,7 @@ type Level struct {
 }
 
 func (o Level) Valid() error {
-	return husk.ValidateStruct(o)
+	return validation.Struct(o)
 }
 
 //GetRank finds the ranks you're not, and subtracts one

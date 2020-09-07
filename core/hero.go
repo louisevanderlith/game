@@ -1,13 +1,15 @@
 package core
 
 import (
+	"github.com/louisevanderlith/husk/hsk"
+	"github.com/louisevanderlith/husk/op"
+	"github.com/louisevanderlith/husk/records"
+	"github.com/louisevanderlith/husk/validation"
 	"time"
-
-	"github.com/louisevanderlith/husk"
 )
 
 type Hero struct {
-	EntityKey   husk.Key
+	EntityKey   hsk.Key
 	Credits     int
 	Experiences []Experience
 	Level       Level
@@ -16,14 +18,14 @@ type Hero struct {
 }
 
 func (o Hero) Valid() error {
-	return husk.ValidateStruct(o)
+	return validation.Struct(o)
 }
 
-func GetHeroes(page, pagesize int) (husk.Collection, error) {
-	return ctx.Heroes.Find(page, pagesize, husk.Everything())
+func GetHeroes(page, pagesize int) (records.Page, error) {
+	return ctx.Heroes.Find(page, pagesize, op.Everything())
 }
 
-func GetHero(key husk.Key) (husk.Recorder, error) {
+func GetHero(key hsk.Key) (hsk.Record, error) {
 	return ctx.Heroes.FindByKey(key)
 }
 

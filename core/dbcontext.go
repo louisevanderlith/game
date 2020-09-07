@@ -1,12 +1,16 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/louisevanderlith/husk"
+	"github.com/louisevanderlith/husk/collections"
+	"os"
+	"reflect"
 )
 
 type context struct {
-	Heroes husk.Tabler
-	Levels husk.Tabler
+	Heroes husk.Table
+	Levels husk.Table
 }
 
 var ctx context
@@ -25,12 +29,33 @@ func Shutdown() {
 }
 
 func seed() {
-	//ctx.Heroes - Levels
-	err := ctx.Levels.Seed("db/levels.seed.json")
+	levels, err := levelSeeds()
 
 	if err != nil {
 		panic(err)
 	}
 
-	ctx.Levels.Save()
+	err = ctx.Levels.Seed(levels)
+
+	if err != nil {
+		panic(err)
+	}
+}
+
+func levelSeeds() (collections.Enumerable, error) {
+	f, err := os.Open("db/levels.seed.json")
+
+	if err != nil {
+		return nil, err
+	}
+
+	var items []Level
+	dec := json.NewDecoder(f)
+	err = dec.Decode(&items)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return collections.ReadOnlyList(reflect.ValueOf(items)), nil
 }

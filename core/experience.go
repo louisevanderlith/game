@@ -1,6 +1,8 @@
 package core
 
-import "github.com/louisevanderlith/husk"
+import (
+	"github.com/louisevanderlith/husk/validation"
+)
 
 type Experience struct {
 	Type   ExperienceType
@@ -8,5 +10,5 @@ type Experience struct {
 }
 
 func (o Experience) Valid() error {
-	return husk.ValidateStruct(o)
+	return validation.Struct(o)
 }

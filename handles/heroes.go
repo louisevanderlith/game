@@ -3,11 +3,11 @@ package handles
 import (
 	"github.com/louisevanderlith/droxolite/drx"
 	"github.com/louisevanderlith/droxolite/mix"
+	"github.com/louisevanderlith/husk/keys"
 	"log"
 	"net/http"
 
 	"github.com/louisevanderlith/game/core"
-	"github.com/louisevanderlith/husk"
 )
 
 func GetHeroes(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +45,7 @@ func SearchHeroes(w http.ResponseWriter, r *http.Request) {
 }
 
 func ViewHeroes(w http.ResponseWriter, r *http.Request) {
-	key, err := husk.ParseKey(drx.FindParam(r, "key"))
+	key, err := keys.ParseKey(drx.FindParam(r, "key"))
 
 	if err != nil {
 		log.Println(err)
