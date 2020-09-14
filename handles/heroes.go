@@ -61,7 +61,7 @@ func ViewHeroes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = mix.Write(w, mix.JSON(record.Data()))
+	err = mix.Write(w, mix.JSON(record.GetValue()))
 
 	if err != nil {
 		log.Println(err)

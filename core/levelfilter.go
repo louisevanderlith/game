@@ -7,7 +7,7 @@ import (
 type levelFilter func(obj Level) bool
 
 func (f levelFilter) Filter(obj hsk.Record) bool {
-	return f(obj.Data().(Level))
+	return f(obj.GetValue().(Level))
 }
 
 //returns the current level

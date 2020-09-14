@@ -21,7 +21,7 @@ func GetRank(totalXP int) int {
 		return 0
 	}
 
-	lvl := record.Data().(*Level)
+	lvl := record.GetValue().(*Level)
 
 	return lvl.Rank - 1
 }
@@ -34,7 +34,7 @@ func GetRequired(totalXP int) int {
 		return 50
 	}
 
-	lvl := record.Data().(*Level)
+	lvl := record.GetValue().(*Level)
 
 	return lvl.Required - totalXP
 }
