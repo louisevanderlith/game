@@ -5,16 +5,14 @@ import (
 	"github.com/louisevanderlith/husk/op"
 	"github.com/louisevanderlith/husk/records"
 	"github.com/louisevanderlith/husk/validation"
-	"time"
 )
 
 type Hero struct {
-	EntityKey   hsk.Key
+	Subject     string //oidc user
 	Credits     int
 	Experiences []Experience
 	Level       Level
 	TotalXP     int
-	LastUpdated time.Time //update on save???
 }
 
 func (o Hero) Valid() error {

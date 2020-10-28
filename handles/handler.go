@@ -2,7 +2,6 @@ package handles
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/louisevanderlith/kong/middle"
 	"github.com/rs/cors"
 	"net/http"
 )
@@ -10,7 +9,7 @@ import (
 func SetupRoutes(scrt, secureUrl string) http.Handler {
 	//Hero
 	/*
-		ins := middle.NewResourceInspector(http.DefaultClient, securityUrl, managerUrl)
+		mw := open.BearerMiddleware(audience, issuer)
 			heroCtrl := &controllers.Heroes{}
 			heroGroup := routing.NewRouteGroup("hero", mix.JSON)
 			heroGroup.AddRoute("Get Hero By ID", "/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, heroCtrl.View)
@@ -25,14 +24,14 @@ func SetupRoutes(scrt, secureUrl string) http.Handler {
 			e.AddBundle(lvlGroup)*/
 	r := mux.NewRouter()
 
-	lst, err := middle.Whitelist(http.DefaultClient, secureUrl, "game.hero.search", scrt)
+	//lst, err := middle.Whitelist(http.DefaultClient, secureUrl, "game.hero.search", scrt)
 
-	if err != nil {
-		panic(err)
-	}
+	//if err != nil {
+	//	panic(err)
+	//}
 
 	corsOpts := cors.New(cors.Options{
-		AllowedOrigins: lst,
+		AllowedOrigins: []string{"*"},
 		AllowedMethods: []string{
 			http.MethodGet,
 			http.MethodPost,
