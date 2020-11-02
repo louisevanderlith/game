@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/louisevanderlith/husk"
+	"github.com/louisevanderlith/husk/validation"
 )
 
 type Level struct {
@@ -9,8 +9,8 @@ type Level struct {
 	Required int
 }
 
-func (o Level) Valid() (bool, error) {
-	return husk.ValidateStruct(&o)
+func (o Level) Valid() error {
+	return validation.Struct(o)
 }
 
 //GetRank finds the ranks you're not, and subtracts one
@@ -21,7 +21,7 @@ func GetRank(totalXP int) int {
 		return 0
 	}
 
-	lvl := record.Data().(*Level)
+	lvl := record.GetValue().(*Level)
 
 	return lvl.Rank - 1
 }
@@ -34,7 +34,7 @@ func GetRequired(totalXP int) int {
 		return 50
 	}
 
-	lvl := record.Data().(*Level)
+	lvl := record.GetValue().(*Level)
 
 	return lvl.Required - totalXP
 }
