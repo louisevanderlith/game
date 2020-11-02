@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func SetupRoutes(scrt, secureUrl string) http.Handler {
+func SetupRoutes(audience, issuer string) http.Handler {
 	//Hero
 	/*
 		mw := open.BearerMiddleware(audience, issuer)
